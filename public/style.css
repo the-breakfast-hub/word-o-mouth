@@ -1,0 +1,36 @@
+/*
+ * Hi! I'm your stylesheet! I've got some sensible defaults here,
+ * but feel free to change me to your heart's content!
+ */
+
+ * {
+  box-sizing: border-box;
+  font-family: arial, sans-serif;
+}
+
+body {
+  background: linear-gradient(#cce5ff, #c0c0c0);
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+}
+
+#nav {
+  align-items: center;
+  background-color: #ffffff;
+  color: #9496da;
+  display: flex;
+  justify-content: space-between;
+  height: 95px;
+  padding: 10px;
+  border: 1px solid #c6c8ff;
+  border-radius: 10px;
+}
+
+main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

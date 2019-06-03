@@ -1,0 +1,29 @@
+h1 {
+  color: rgb(130, 149, 208);
+  font-family: 'Dosis';
+}
+
+p {
+  font-family: 'Dosis';
+  color: rgb(130, 149, 208);
+}
+
+nav {
+  font-family: 'Dosis';
+}
+
+#menu-button {
+  width: 60px;
+  height: 48px;
+  padding: 10px;
+  border: 1px solid rgb(199, 208, 237);
+  border-radius: 10px;
+}
+
+#search-icon {
+  width: 48px;
+  height: 48px;
+  padding: 10px;
+  border: 1px solid rgb(199, 208, 237);
+  border-radius: 10px;
+}
