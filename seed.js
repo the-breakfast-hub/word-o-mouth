@@ -3,6 +3,7 @@ const { green, red } = require('chalk');
 const User = require('./server/db/User');
 const Place = require('./server/db/Place');
 const Restaurant = require('./server/db/Restaurant');
+const { queryInterface } = require('sequelize');
 
 const seed = async () => {
   await db.sync({ force: true });
@@ -44,25 +45,33 @@ const seed = async () => {
     name: 'Lennys',
     cuisine: 'American',
     placeId: 1
-  })
+  });
 
   const restaurantTwo = await Restaurant.create({
     name: 'Poke',
     cuisine: 'Japanese',
     placeId: 2
-  })
+  });
 
   const restaurantThree = await Restaurant.create({
     name: 'Wendys',
     cuisine: 'Mexican',
-    placeId: 3,
-  })
+    placeId: 3
+  });
 
   const restaurantFour = await Restaurant.create({
     name: 'Pizza Boy',
     cuisine: 'Italian',
     placeId: 4
-  })
+  });
+
+  // const arrayOfUsers = await User.bulkCreate([
+  //   {
+  //   firstName: 'Wagner',
+  //   lastName: 'Richard',
+  //   email: 'richard.wagner@gmail.com'
+  //   },
+  // ])
 
   const wagner = await User.create({
     firstName: 'Wagner',
@@ -112,6 +121,12 @@ const seed = async () => {
     email: 'harper.lee@aol.com'
   });
 
+  await db.queryInterface.bulkInsert('friendship', [
+    { userId: 1, friendId: 2, createdAt: new Date(), updatedAt: new Date() },
+    { userId: 1, friendId: 3, createdAt: new Date(), updatedAt: new Date() },
+    { userId: 2, friendId: 4, createdAt: new Date(), updatedAt: new Date() },
+    { userId: 3, friendId: 2, createdAt: new Date(), updatedAt: new Date() }
+  ]);
 
   // const titan = await Campus.create({
   //   firstName: ,
