@@ -12,16 +12,16 @@ class SearchBar extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(e) {
-    this.setState({ query: e.target.value });
-  }
-
-  componentDidMount() {
-    this.props.getAllPlaces();
+  async handleChange(e) {
+    if (e.target.value) {
+      const queryList = await this.props.getAllPlaces({
+        query: e.target.value
+      });
+      this.setState({ query: queryList });
+    }
   }
 
   render() {
-    console.log(">>> ", this.state.places);
     return (
       <div>
         <form>
@@ -40,7 +40,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getAllPlaces: () => dispatch(getAllPlaces())
+    getAllPlaces: formData => dispatch(getAllPlaces(formData))
   };
 };
 

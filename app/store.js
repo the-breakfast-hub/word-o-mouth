@@ -11,12 +11,14 @@ const getAllPlacesActionHandler = places => {
   return { type: GET_ALL_PLACES, places };
 };
 
-export const getAllPlaces = () => {
+export const getAllPlaces = formData => {
   return async dispatch => {
     try {
-      const { data } = axios.get("/api/places");
+      const { data } = await axios.put("/api/places", formData);
       dispatch(getAllPlacesActionHandler(data));
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
 };
 
