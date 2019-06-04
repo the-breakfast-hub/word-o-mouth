@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getAllPlaces } from "../store";
+import { getSearchPlaces } from "../reducers/placesReducer";
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class SearchBar extends React.Component {
 
   async handleChange(e) {
     if (e.target.value) {
-      const queryList = await this.props.getAllPlaces({
+      const queryList = await this.props.getSearchPlaces({
         query: e.target.value
       });
       this.setState({ query: queryList });
@@ -40,7 +40,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getAllPlaces: formData => dispatch(getAllPlaces(formData))
+    getSearchPlaces: formData => dispatch(getSearchPlaces(formData))
   };
 };
 

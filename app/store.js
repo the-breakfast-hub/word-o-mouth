@@ -5,23 +5,6 @@ import rootReducer from "./reducers";
 import loggingMiddleware from "redux-logger"; // https://github.com/evgenyrodionov/redux-logger
 import thunkMiddleware from "redux-thunk"; // https://github.com/gaearon/redux-thunk
 
-const GET_ALL_PLACES = "GET_ALL_PLACES";
-
-const getAllPlacesActionHandler = places => {
-  return { type: GET_ALL_PLACES, places };
-};
-
-export const getAllPlaces = formData => {
-  return async dispatch => {
-    try {
-      const { data } = await axios.put("/api/places", formData);
-      dispatch(getAllPlacesActionHandler(data));
-    } catch (error) {
-      console.log(error);
-    }
-  };
-};
-
 export default createStore(
   rootReducer,
   composeWithDevTools(
