@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getSearchPlaces } from "../reducers/placesReducer";
+import './SearchBar.css'
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -23,9 +24,9 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="search-bar">
         <form>
-          <input type="text" onChange={this.handleChange} />
+          <input id="search-box" type="text" onChange={this.handleChange} />
         </form>
       </div>
     );

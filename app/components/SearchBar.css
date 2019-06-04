@@ -1,0 +1,11 @@
+#search-bar {
+  border: 1px solid black;
+  margin: 10px;
+}
+
+#search-box {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px;
+  width: 300px;
+}
