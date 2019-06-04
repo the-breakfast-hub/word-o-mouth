@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node server",
-    "start-dev": "start webpack -w && start nodemon main.js",
+    "start-dev": "webpack -w & nodemon main.js",
+    "start-dev-w": "start webpack -w && start nodemon main.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "seed": "node seed.js"
   },
