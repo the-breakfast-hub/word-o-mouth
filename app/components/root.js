@@ -1,5 +1,7 @@
-import React from 'react';
-import './root.css';
+import React from "react";
+import "./root.css";
+import SearchBar from "./SearchBar";
+import SearchList from "./SearchList";
 
 const Root = () => {
   return (
@@ -16,6 +18,8 @@ const Root = () => {
         </div>
       </div>
       <main>
+        <SearchBar />
+        <SearchList />
         <p>Your Recent Places</p>
         <div id="places" />
       </main>
