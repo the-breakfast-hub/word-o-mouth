@@ -14,7 +14,6 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { connect } from "react-redux";
 import { addUser } from "../reducers/usersReducer";
-import { Redirect } from "react-router-dom";
 
 const styles = theme => ({
   "@global": {
