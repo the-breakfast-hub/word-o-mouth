@@ -1,16 +1,11 @@
 import axios from "axios";
 
 const GOT_USER = "GOT_USER";
-const ADD_USER = "ADD_USER";
 
 const gotUser = user => ({
   type: GOT_USER,
   user
 });
-
-const addUserActionHandler = user => {
-  return { type: ADD_USER, user };
-};
 
 export const addUser = formData => async dispatch => {
   const { data } = await axios.post("/api/users/add", formData);
