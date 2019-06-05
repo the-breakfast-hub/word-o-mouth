@@ -6,10 +6,7 @@
   "scripts": {
     "start": "node server",
     "start-dev": "webpack -w & nodemon main.js",
-<<<<<<< HEAD
     "start-dev-w": "start webpack -w && start nodemon main.js",
-=======
->>>>>>> ba839b7c228af39c2dc40b02d6aa379835129e21
     "test": "echo \"Error: no test specified\" && exit 1",
     "seed": "node seed.js"
   },
