@@ -1,0 +1,9 @@
+.marker {
+  background-size: cover;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2;
+  background-image: url("https://cdn1.iconfinder.com/data/icons/cloud-14/32/pin_custom_location_locate_google-512.png")
+}
