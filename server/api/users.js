@@ -19,4 +19,23 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
+router.get('/:id/friends', async (req, res, next) => {
+  try {
+    const user = await User.findOne({
+      where: {
+        id: req.params.id
+      }
+    })
+    const friends = await user.getFriends()
+    if (friends) {
+      res.json(friends)
+    }
+    else {
+      console.log(`can't find friends`)
+    }
+  } catch (error) {
+    next(error)
+  }
+})
+
 module.exports = router;

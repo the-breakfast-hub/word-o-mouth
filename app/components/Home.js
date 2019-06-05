@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import { logout } from '../reducers/usersReducer'
+import Root from './root'
+import './Home.css'
+
 
 const Home = props => {
   console.log(props)
@@ -13,7 +16,9 @@ const Home = props => {
   return (
     <div>
       <h1>Welcome Back {user.firstName}!</h1>{' '}
+      <Root />
       <Button
+        className="logout_button"
         onClick={handleClick}
         type="submit"
         variant="contained"

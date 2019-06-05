@@ -1,8 +1,9 @@
-import React from "react";
-import "./root.css";
-import SearchBar from "./SearchBar";
-import SearchList from "./SearchList";
-import Map from './Map'
+import React from 'react';
+import './root.css';
+import SearchBar from './SearchBar';
+import SearchList from './SearchList';
+import Map from './Map';
+import { Link } from 'react-router-dom'
 
 const Root = () => {
   return (
@@ -15,14 +16,15 @@ const Root = () => {
           <h1>Word of Mouth</h1>
         </div>
         <div>
-          <img id="search-icon" src="https://i.imgur.com/rPXnctN.png" />
+          <Link to="/map" component={Map}>
+            <img id="search-icon" src="https://i.imgur.com/rPXnctN.png" />
+          </Link>
         </div>
       </div>
       <main>
         <SearchBar />
         <p>Your Recent Places</p>
         <SearchList />
-        <Map />
         <div id="places" />
       </main>
     </div>

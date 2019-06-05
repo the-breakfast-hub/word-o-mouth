@@ -17,7 +17,7 @@ import { getMe } from './reducers/usersReducer';
 import Home from './components/Home';
 import Login from './components/Login';
 import NewUser from './components/NewUser';
-
+import Map from './components/Map'
 const Main = withRouter(
   class extends React.Component {
     async componentDidMount() {
@@ -30,6 +30,7 @@ const Main = withRouter(
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/newUser" component={NewUser} />
+          <Route path="/map" component={Map} />
         </Switch>
       );
     }
