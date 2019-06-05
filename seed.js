@@ -3,6 +3,7 @@ const { green, red } = require('chalk');
 const User = require('./server/db/User');
 const Place = require('./server/db/Place');
 const Restaurant = require('./server/db/Restaurant');
+const { queryInterface } = require('sequelize');
 
 const seed = async () => {
   await db.sync({ force: true });
@@ -44,90 +45,96 @@ const seed = async () => {
     name: 'Lennys',
     cuisine: 'American',
     placeId: 1
-  })
+  });
 
   const restaurantTwo = await Restaurant.create({
     name: 'Poke',
     cuisine: 'Japanese',
     placeId: 2
-  })
+  });
 
   const restaurantThree = await Restaurant.create({
     name: 'Wendys',
     cuisine: 'Mexican',
-    placeId: 3,
-  })
+    placeId: 3
+  });
 
   const restaurantFour = await Restaurant.create({
     name: 'Pizza Boy',
     cuisine: 'Italian',
     placeId: 4
-  })
+  });
 
   const wagner = await User.create({
     firstName: 'Wagner',
     lastName: 'Richard',
-    email: 'richard.wagner@gmail.com'
+    email: 'richard.wagner@gmail.com',
+    password: 'alejfija',
+    zipCode: '11418'
   });
 
   const amadeus = await User.create({
     firstName: 'Amadeus',
     lastName: 'Mozart',
-    email: 'amadeus.mozart@hotmail.com'
+    email: 'amadeus.mozart@hotmail.com',
+    password: 'alejfija',
+    zipCode: '11418'
   });
 
   const khalil = await User.create({
     firstName: 'Khalil',
     lastName: 'Gibran',
-    email: 'khalil.gibran@yahoo.com'
+    email: 'khalil.gibran@yahoo.com',
+    password: 'alejfija',
+    zipCode: '11418'
   });
 
   const dorian = await User.create({
     firstName: 'Dorian',
     lastName: 'Gray',
-    email: 'dorian.gray@aol.com'
+    email: 'dorian.gray@aol.com',
+    password: 'alejfija',
+    zipCode: '11418'
   });
 
   const margaret = await User.create({
     firstName: 'Margaret',
     lastName: 'Atwood',
-    email: 'margaret.atwood@gmail.com'
+    email: 'margaret.atwood@gmail.com',
+    password: 'alejfija',
+    zipCode: '11418'
   });
 
   const virginia = await User.create({
     firstName: 'Virginia',
     lastName: 'Woolf',
-    email: 'virginia.woolf@hotmail.com'
+    email: 'virginia.woolf@hotmail.com',
+    password: 'alejfija',
+    zipCode: '11418'
   });
 
   const jane = await User.create({
     firstName: 'Jane',
     lastName: 'Austen',
-    email: 'jane.austen@yahoo.com'
+    email: 'jane.austen@yahoo.com',
+    password: 'alejfija',
+    zipCode: '11418'
   });
 
   const harper = await User.create({
     firstName: 'Harper',
     lastName: 'Lee',
-    email: 'harper.lee@aol.com'
+    email: 'harper.lee@aol.com',
+    password: 'alejfija',
+    zipCode: '11418'
   });
 
-
-  // const titan = await Campus.create({
-  //   firstName: ,
-  //   lastName: ,
-  //   email: ,
-  // });
-
-  // const margaret = await Student.create({
-  //   firstName: 'Margaret',
-  //   lastName: 'Atwood',
-  //   email: 'margaret.atwood@gmail.com',
-  //   imageUrl: 'https://i.imgur.com/kBJ70Ve.png',
-  //   gpa: 3.9,
-  //   major: 'Business Administration',
-  //   campusId: luna.id
-  // });
+  await db.queryInterface.bulkInsert('friendship', [
+    { userId: 1, friendId: 2, createdAt: new Date(), updatedAt: new Date() },
+    { userId: 1, friendId: 3, createdAt: new Date(), updatedAt: new Date() },
+    { userId: 2, friendId: 4, createdAt: new Date(), updatedAt: new Date() },
+    { userId: 3, friendId: 2, createdAt: new Date(), updatedAt: new Date() }
+  ]);
 
   console.log(green('Seeding success!'));
   db.close();

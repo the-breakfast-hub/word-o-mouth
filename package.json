@@ -6,7 +6,10 @@
   "scripts": {
     "start": "node server",
     "start-dev": "webpack -w & nodemon main.js",
+<<<<<<< HEAD
     "start-dev-w": "start webpack -w && start nodemon main.js",
+=======
+>>>>>>> ba839b7c228af39c2dc40b02d6aa379835129e21
     "test": "echo \"Error: no test specified\" && exit 1",
     "seed": "node seed.js"
   },
@@ -21,18 +24,24 @@
     "webpack-cli": "^3.3.2"
   },
   "dependencies": {
+    "@material-ui/core": "^4.0.2",
+    "@material-ui/icons": "^4.0.1",
     "axios": "^0.19.0",
     "babel-polyfill": "^6.26.0",
     "body-parser": "^1.19.0",
     "chalk": "^2.4.2",
+    "connect-session-sequelize": "^6.0.0",
     "css-loader": "^2.1.1",
     "express": "^4.17.1",
+    "express-session": "^1.16.1",
     "morgan": "^1.9.1",
     "nodemon": "^1.19.1",
+    "passport": "^0.4.0",
     "pg": "^7.11.0",
     "pg-hstore": "^2.3.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-map-gl": "^5.0.1",
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.0",
     "redux": "^4.0.1",

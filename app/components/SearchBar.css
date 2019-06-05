@@ -1,0 +1,9 @@
+#search-bar {
+  margin: 10px;
+}
+
+#search-box {
+  border-radius: 10px;
+  padding: 5px;
+  width: 300px;
+}
