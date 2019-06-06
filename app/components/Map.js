@@ -2,6 +2,7 @@ import React from 'react';
 import ReactMapGL, { Marker } from 'react-map-gl'
 import './Map.css'
 import Root from './root'
+import axios from 'axios';
 
 export default class Map extends React.Component {
   constructor() {
@@ -12,10 +13,30 @@ export default class Map extends React.Component {
         height: 1300,
         latitude: 40.754,
         longitude: -73.984,
-        zoom: 14
-      }
+        zoom: 1
+      },
+      favorites: {},
     };
+    // this.onViewportChange = this.onViewPortChange.bind(this);
   }
+
+  async componentDidMount() {
+    try {
+      const { data } = await axios.get('https://api.foursquare.com/v2/venues/search?ll=40.7047,74.0094&radius=1000&client_id=5IDUOTEW20UIMVSEBNT1UJCSCBXQQB4X55DLJDE0QCK23TKT&client_secret=QWUQ4HLZKU34TZNMSCHBMYP0NZ2TUFSQX0RPX4TOTWMZ0MPN&v=20190606');
+      this.setState({
+        favorites: data,
+      })
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  // // add and bind onViewPortChange 
+  // onViewportChange(viewport) {
+  //   this.setState({
+  //     viewport,
+  //   })
+  // }
 
   render() {
     return (
@@ -30,9 +51,11 @@ export default class Map extends React.Component {
           {...this.state.viewport}
           onViewportChange={viewport => this.setState({ viewport })}
         >
-          <Marker latitude={40.754} longitude={-73.984} offsetLeft={-20} offsetTop={-10}>
-            <div className="marker" />
+          {/* <Marker latitude={40.705137} longitude={-74.01394} offsetLeft={-20} offsetTop={-10}> */}
+          <Marker latitude={40.705137} longitude={-74.01394} >
+            <div className="initialMarker" />
           </Marker>
+          {this.state.favorites.response ? this.state.favorites.response.venues.map(curVenue => (<Marker key={curVenue.id} latitude={curVenue.location.lat} longitude={curVenue.location.lng} ><div className="marker" /></Marker>)) : null}
         </ReactMapGL>
         </div>
         

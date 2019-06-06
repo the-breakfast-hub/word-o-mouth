@@ -2,9 +2,12 @@ import axios from "axios";
 
 const GET_SEACH_PLACES = "GET_SEARCH_PLACES";
 
-const getSearchPlacesActionHandler = places => {
-  return { type: GET_SEACH_PLACES, places };
-};
+const getSearchPlacesActionHandler = places => ({
+    type: GET_SEACH_PLACES, 
+    places 
+  })
+
+
 
 export const getSearchPlaces = formData => {
   return async dispatch => {
