@@ -3,6 +3,7 @@ import axios from 'axios';
 const GET_SEARCH_PLACES = 'GET_SEARCH_PLACES';
 const GOT_USERS_PLACES = 'GOT_PLACES';
 
+
 const getSearchPlacesActionHandler = places => {
   return { type: GET_SEARCH_PLACES, places };
 };

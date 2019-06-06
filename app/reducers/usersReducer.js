@@ -1,31 +1,35 @@
-import axios from 'axios';
+import axios from "axios";
 
-const GOT_USER = 'GOT_USER';
+const GOT_USER = "GOT_USER";
 
 const gotUser = user => ({
   type: GOT_USER,
-  user,
+  user
 });
 
+export const addUser = formData => async dispatch => {
+  const { data } = await axios.post("/api/users/add", formData);
+  dispatch(gotUser(data));
+};
+
 export const getMe = () => async dispatch => {
-  const { data } = await axios.get('/auth/me');
+  const { data } = await axios.get("/auth/me");
   dispatch(gotUser(data));
 };
 
 export const login = formData => async dispatch => {
-  const { data } = await axios.put('/auth/login', formData);
+  const { data } = await axios.put("/auth/login", formData);
   dispatch(gotUser(data));
 };
 
 export const logout = () => async dispatch => {
-  await axios.delete('/auth/logout');
+  await axios.delete("/auth/logout");
   dispatch(gotUser(initialState.user));
 };
 
 const initialState = {
-  user: {},
+  user: {}
 };
-
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
