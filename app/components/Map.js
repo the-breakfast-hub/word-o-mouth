@@ -2,10 +2,11 @@ import React from 'react';
 import ReactMapGL, { Marker } from 'react-map-gl'
 import './Map.css'
 import Root from './root'
+import { positions } from '@material-ui/system';
 
 export default class Map extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       viewport: {
         width: 1500,
@@ -13,8 +14,18 @@ export default class Map extends React.Component {
         latitude: 40.754,
         longitude: -73.984,
         zoom: 14
+      },
+      userLocation:{
+        lat: 0,
+        long: 0
       }
-    };
+    }
+  }
+
+  componentDidMount(){
+    navigator.geolocation.getCurrentPosition((position)=>{
+      this.setState({userLocation: {...this.state.userLocation, lat: position.coords.latitude, long: position.coords.longitude}})
+    })
   }
 
   render() {
@@ -33,11 +44,14 @@ export default class Map extends React.Component {
           <Marker latitude={40.754} longitude={-73.984} offsetLeft={-20} offsetTop={-10}>
             <div className="marker" />
           </Marker>
+
+          <Marker latitude={this.state.userLocation.lat} longitude={this.state.userLocation.long} offsetLeft={-20} offsetTop={-10}>
+            <div className="marker" />
+          </Marker>
         </ReactMapGL>
         </div>
         
         <aside>
-
           <div className="panel" id="options-panel">
             
             <div>
