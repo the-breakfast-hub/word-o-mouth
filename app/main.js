@@ -29,7 +29,7 @@ const Main = withRouter(
           <Route path="/login" component={Login} />
           <Route path="/newUser" component={NewUser} />
           <Route path="/map" component={Map} />
-          <Route path="/places" component={myPlaces} />
+          <Route path="/places/:id" component={myPlaces} />
         </Switch>
       );
     }
