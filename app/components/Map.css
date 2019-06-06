@@ -1,6 +1,6 @@
 h2 {
   margin: 0 0 0.5rem 0;
-  font-family: 'Dosis';
+  font-family: "Dosis";
   font-weight: normal;
   font-size: 1.2rem;
 }
@@ -22,20 +22,20 @@ h2 {
   border-radius: 50%;
   cursor: pointer;
   z-index: 2;
-  background-image: url("https://cdn1.iconfinder.com/data/icons/cloud-14/32/pin_custom_location_locate_google-512.png")
+  background-image: url("https://cdn1.iconfinder.com/data/icons/cloud-14/32/pin_custom_location_locate_google-512.png");
 }
 
 #map {
   flex: 2;
   height: calc(100vh - 3rem);
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 aside {
   flex: 1;
   display: flex;
   flex-direction: column;
-  font-family: 'Dosis';
+  font-family: "Dosis";
 }
 
 #app {
@@ -48,7 +48,7 @@ aside {
   border-radius: 2px;
   background-color: rgb(194, 225, 255);
   color: rgb(94, 93, 97);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 .panel > div {
@@ -62,7 +62,7 @@ aside {
 
 @media screen and (max-width: 600px) {
   #app {
-    flex-direction: column
+    flex-direction: column;
   }
   #map {
     margin: 0 1rem;
@@ -93,5 +93,3 @@ select {
 .options-btn:active {
   background: #286090;
 }
-
-

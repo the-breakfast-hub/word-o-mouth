@@ -1,3 +1,4 @@
+
 import React from 'react';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -73,9 +74,9 @@ const mapStateToProps = state => ({
   loading: state.places.loading,
 });
 
-const mapDispatchToProps = dispatch => ({
-  getMyPlaces: id => dispatch(getUsersPlaces(id)),
-});
+// const mapDispatchToProps = dispatch => ({
+//   getMyPlaces: id => dispatch(getUsersPlaces(id)),
+// });
 
 export default connect(
   mapStateToProps,

@@ -5,8 +5,8 @@ import Root from './root'
 import axios from 'axios';
 
 export default class Map extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       viewport: {
         width: 1500,
@@ -16,6 +16,10 @@ export default class Map extends React.Component {
         zoom: 1
       },
       favorites: {},
+      userLocation: {
+        lat: 0,
+        long: 0
+      }
     };
     // this.onViewportChange = this.onViewPortChange.bind(this);
   }
@@ -23,10 +27,17 @@ export default class Map extends React.Component {
   async componentDidMount() {
     try {
       const { data } = await axios.get('https://api.foursquare.com/v2/venues/search?ll=40.7047,74.0094&radius=1000&client_id=5IDUOTEW20UIMVSEBNT1UJCSCBXQQB4X55DLJDE0QCK23TKT&client_secret=QWUQ4HLZKU34TZNMSCHBMYP0NZ2TUFSQX0RPX4TOTWMZ0MPN&v=20190606');
-      this.setState({
-        favorites: data,
+      navigator.geolocation.getCurrentPosition(position=>{
+        this.setState({
+          favorites: data,
+          userLocation: {
+            lat: position.coords.latitude,
+            long: position.coords.longitude
+          }
+        })
       })
-    } catch (error) {
+   
+    } catch(error) {
       console.error(error);
     }
   }
@@ -39,6 +50,7 @@ export default class Map extends React.Component {
   // }
 
   render() {
+    console.log(">>> ", this.state)
     return (
       <div>
       <div>
@@ -60,7 +72,6 @@ export default class Map extends React.Component {
         </div>
 
         <aside>
-
           <div className="panel" id="options-panel">
 
             <div>
