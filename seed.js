@@ -14,7 +14,7 @@ const seed = async () => {
     city: 'New York',
     state: 'NY',
     phone: '123-456-7890',
-    location: [-74.01394, 40.705137]
+    location: [-74.01394, 40.705137],
   });
 
   const placeTwo = await Place.create({
@@ -22,7 +22,7 @@ const seed = async () => {
     city: 'Richmond Hill',
     state: 'NY',
     phone: '123-456-7890',
-    location: [-74.01394, 40.705137]
+    location: [-74.01394, 40.705137],
   });
 
   const placeThree = await Place.create({
@@ -30,7 +30,7 @@ const seed = async () => {
     city: 'Maspeth',
     state: 'NY',
     phone: '123-456-7890',
-    location: [-74.01394, 40.705137]
+    location: [-74.01394, 40.705137],
   });
 
   const placeFour = await Place.create({
@@ -38,31 +38,31 @@ const seed = async () => {
     city: 'New York',
     state: 'NY',
     phone: '123-456-7890',
-    location: [-74.01394, 40.705137]
+    location: [-74.01394, 40.705137],
   });
 
   const restaurantOne = await Restaurant.create({
     name: 'Lennys',
     cuisine: 'American',
-    placeId: 1
+    placeId: 1,
   });
 
   const restaurantTwo = await Restaurant.create({
     name: 'Poke',
     cuisine: 'Japanese',
-    placeId: 2
+    placeId: 2,
   });
 
   const restaurantThree = await Restaurant.create({
     name: 'Wendys',
     cuisine: 'Mexican',
-    placeId: 3
+    placeId: 3,
   });
 
   const restaurantFour = await Restaurant.create({
     name: 'Pizza Boy',
     cuisine: 'Italian',
-    placeId: 4
+    placeId: 4,
   });
 
   const wagner = await User.create({
@@ -70,7 +70,7 @@ const seed = async () => {
     lastName: 'Richard',
     email: 'richard.wagner@gmail.com',
     password: 'alejfija',
-    zipCode: '11418'
+    zipCode: '11418',
   });
 
   const amadeus = await User.create({
@@ -78,7 +78,7 @@ const seed = async () => {
     lastName: 'Mozart',
     email: 'amadeus.mozart@hotmail.com',
     password: 'alejfija',
-    zipCode: '11418'
+    zipCode: '11418',
   });
 
   const khalil = await User.create({
@@ -86,7 +86,7 @@ const seed = async () => {
     lastName: 'Gibran',
     email: 'khalil.gibran@yahoo.com',
     password: 'alejfija',
-    zipCode: '11418'
+    zipCode: '11418',
   });
 
   const dorian = await User.create({
@@ -94,7 +94,7 @@ const seed = async () => {
     lastName: 'Gray',
     email: 'dorian.gray@aol.com',
     password: 'alejfija',
-    zipCode: '11418'
+    zipCode: '11418',
   });
 
   const margaret = await User.create({
@@ -102,7 +102,7 @@ const seed = async () => {
     lastName: 'Atwood',
     email: 'margaret.atwood@gmail.com',
     password: 'alejfija',
-    zipCode: '11418'
+    zipCode: '11418',
   });
 
   const virginia = await User.create({
@@ -110,7 +110,7 @@ const seed = async () => {
     lastName: 'Woolf',
     email: 'virginia.woolf@hotmail.com',
     password: 'alejfija',
-    zipCode: '11418'
+    zipCode: '11418',
   });
 
   const jane = await User.create({
@@ -118,7 +118,7 @@ const seed = async () => {
     lastName: 'Austen',
     email: 'jane.austen@yahoo.com',
     password: 'alejfija',
-    zipCode: '11418'
+    zipCode: '11418',
   });
 
   const harper = await User.create({
@@ -126,14 +126,53 @@ const seed = async () => {
     lastName: 'Lee',
     email: 'harper.lee@aol.com',
     password: 'alejfija',
-    zipCode: '11418'
+    zipCode: '11418',
   });
 
   await db.queryInterface.bulkInsert('friendship', [
     { userId: 1, friendId: 2, createdAt: new Date(), updatedAt: new Date() },
     { userId: 1, friendId: 3, createdAt: new Date(), updatedAt: new Date() },
     { userId: 2, friendId: 4, createdAt: new Date(), updatedAt: new Date() },
-    { userId: 3, friendId: 2, createdAt: new Date(), updatedAt: new Date() }
+    { userId: 3, friendId: 2, createdAt: new Date(), updatedAt: new Date() },
+  ]);
+
+  await db.queryInterface.bulkInsert('favorite', [
+    {
+      userId: 1,
+      restaurantId: 1,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      userId: 1,
+      restaurantId: 2,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      userId: 1,
+      restaurantId: 3,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      userId: 2,
+      restaurantId: 2,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      userId: 2,
+      restaurantId: 3,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      userId: 3,
+      restaurantId: 2,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
   ]);
 
   console.log(green('Seeding success!'));
