@@ -11,31 +11,40 @@ export default class Map extends React.Component {
       viewport: {
         width: 1500,
         height: 1300,
-        latitude: 40.754,
-        longitude: -73.984,
-        zoom: 1
+        latitude: 40.7106639,
+        longitude: -74.0182495,
+        zoom: 14
       },
       favorites: {},
       userLocation: {
-        lat: 0,
-        long: 0
+        lat: 40.7106639,
+        long: -74.0182495
       }
     };
-    // this.onViewportChange = this.onViewPortChange.bind(this);
   }
 
   async componentDidMount() {
+    await navigator.geolocation.getCurrentPosition(position=>{
+      this.setState({
+        viewport: {...this.state.viewport, latitude: position.coords.latitude, longitude: position.coords.longitude},
+        userLocation: {
+              lat: position.coords.latitude,
+              long: position.coords.longitude
+            }})
+          })
     try {
-      const { data } = await axios.get('https://api.foursquare.com/v2/venues/search?ll=40.7047,74.0094&radius=1000&client_id=5IDUOTEW20UIMVSEBNT1UJCSCBXQQB4X55DLJDE0QCK23TKT&client_secret=QWUQ4HLZKU34TZNMSCHBMYP0NZ2TUFSQX0RPX4TOTWMZ0MPN&v=20190606');
-      navigator.geolocation.getCurrentPosition(position=>{
-        this.setState({
-          favorites: data,
-          userLocation: {
-            lat: position.coords.latitude,
-            long: position.coords.longitude
-          }
-        })
-      })
+      const { data } = await axios.get(`https://api.foursquare.com/v2/venues/search?ll=${this.state.userLocation.lat},${this.state.userLocation.long}&radius=1000&intent=browse&categoryId=4bf58dd8d48988d14e941735&client_id=5IDUOTEW20UIMVSEBNT1UJCSCBXQQB4X55DLJDE0QCK23TKT&client_secret=QWUQ4HLZKU34TZNMSCHBMYP0NZ2TUFSQX0RPX4TOTWMZ0MPN&v=20190606`);
+      this.setState({favorites: data})
+      // navigator.geolocation.getCurrentPosition(position=>{
+      //   this.setState({
+      //     favorites: data,
+      //     viewport:{...this.state.viewport, latitude: position.coords.latitude, longitude: position.coords.longitude},
+      //     userLocation: {
+      //       lat: position.coords.latitude,
+      //       long: position.coords.longitude
+      //     }
+      //   })
+      // })
    
     } catch(error) {
       console.error(error);
@@ -50,6 +59,7 @@ export default class Map extends React.Component {
   // }
 
   render() {
+    console.log(this.state.favorites  )
     return (
       <div>
       <div>
@@ -63,8 +73,11 @@ export default class Map extends React.Component {
           onViewportChange={viewport => this.setState({ viewport })}
         >
           {/* <Marker latitude={40.705137} longitude={-74.01394} offsetLeft={-20} offsetTop={-10}> */}
-          <Marker latitude={40.705137} longitude={-74.01394} >
+          {/* <Marker latitude={40.705137} longitude={-74.01394} >
             <div className="initialMarker" />
+          </Marker> */}
+          <Marker latitude={this.state.userLocation.lat} longitude={this.state.userLocation.long} >
+            <div className="marker" />
           </Marker>
           {this.state.favorites.response ? this.state.favorites.response.venues.map(curVenue => (<Marker key={curVenue.id} latitude={curVenue.location.lat} longitude={curVenue.location.lng} ><div className="marker" /></Marker>)) : null}
         </ReactMapGL>
