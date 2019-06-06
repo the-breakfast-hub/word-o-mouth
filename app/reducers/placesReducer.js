@@ -33,6 +33,7 @@ const initialState = {
   selectedPlace: {},
   searchPlaces: [],
   myFriendsPlaces: [],
+  loading: true,
 };
 
 const reducer = (state = initialState, action) => {
@@ -40,7 +41,7 @@ const reducer = (state = initialState, action) => {
     case GET_SEARCH_PLACES:
       return { ...state, searchPlaces: action.searchPlaces };
     case GOT_USERS_PLACES:
-      return { ...state, myPlaces: action.myPlaces };
+      return { ...state, myPlaces: action.places, loading: false };
     default:
       return state;
   }
