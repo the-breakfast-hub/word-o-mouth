@@ -7,6 +7,7 @@ import Root from "./root";
 import "./Home.css";
 
 const Home = props => {
+  console.log(props);
   const { user, handleClick } = props;
   if (!user.id) {
     return <Redirect to="/login" />;

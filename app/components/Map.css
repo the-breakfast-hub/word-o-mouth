@@ -5,10 +5,20 @@ h2 {
   font-size: 1.2rem;
 }
 
+.initialMarker {
+  background-size: cover;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2;
+  background-image: url("https://franklintwpfire.org/wp-content/uploads/2018/10/pin-point-map-map-pin-love-field-terminal-map-of-pin-point-map-1.jpg")
+}
+
 .marker {
   background-size: cover;
-  width: 20px;
-  height: 20px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   cursor: pointer;
   z-index: 2;
