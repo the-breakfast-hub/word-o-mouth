@@ -1,5 +1,5 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
 const SearchList = props => {
   return (
@@ -13,7 +13,7 @@ const SearchList = props => {
 
 const mapStateToProps = state => {
   return {
-    places: state.places
+    places: state.places.searchPlaces,
   };
 };
 

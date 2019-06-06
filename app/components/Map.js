@@ -35,11 +35,11 @@ export default class Map extends React.Component {
           </Marker>
         </ReactMapGL>
         </div>
-        
+
         <aside>
 
           <div className="panel" id="options-panel">
-            
+
             <div>
               <h2>Hotels</h2>
               <select id="hotels-choices">
@@ -47,7 +47,7 @@ export default class Map extends React.Component {
               </select>
               <button type="submit" id="hotels-add" className="options-btn">+</button>
             </div>
-            
+
             <div>
               <h2>Restaurants</h2>
               <select id="restaurants-choices">
@@ -67,7 +67,7 @@ export default class Map extends React.Component {
           </div>
 
           <div className="panel" id="itinerary">
-            
+
             <div>
               <h2>My Hotel</h2>
               <ul className="list-group" id="hotels-list"/>

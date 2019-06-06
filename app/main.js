@@ -1,6 +1,3 @@
-import Root from './components/root'
-
-/* eslint-disable react/display-name */
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -17,7 +14,8 @@ import { getMe } from './reducers/usersReducer';
 import Home from './components/Home';
 import Login from './components/Login';
 import NewUser from './components/NewUser';
-import Map from './components/Map'
+import Map from './components/Map';
+import myPlaces from './components/myPlaces';
 const Main = withRouter(
   class extends React.Component {
     async componentDidMount() {
@@ -31,6 +29,7 @@ const Main = withRouter(
           <Route path="/login" component={Login} />
           <Route path="/newUser" component={NewUser} />
           <Route path="/map" component={Map} />
+          <Route path="/places" component={myPlaces} />
         </Switch>
       );
     }

@@ -3,7 +3,7 @@ import './root.css';
 import SearchBar from './SearchBar';
 import SearchList from './SearchList';
 import Map from './Map';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 const Root = () => {
   return (
