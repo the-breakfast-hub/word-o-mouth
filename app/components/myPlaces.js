@@ -1,26 +1,25 @@
-
-import React from 'react';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import ListItemText from '@material-ui/core/ListItemText';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import FolderIcon from '@material-ui/icons/Folder';
-import DeleteIcon from '@material-ui/icons/Delete';
-import { connect } from 'react-redux';
-import { getUsersPlaces } from '../reducers/placesReducer';
-import { withStyles } from '@material-ui/styles';
-import Restaurant from '@material-ui/icons/Restaurant';
+import React from "react";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
+import ListItemText from "@material-ui/core/ListItemText";
+import Avatar from "@material-ui/core/Avatar";
+import IconButton from "@material-ui/core/IconButton";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import FolderIcon from "@material-ui/icons/Folder";
+import DeleteIcon from "@material-ui/icons/Delete";
+import { connect } from "react-redux";
+import { getUsersPlaces } from "../reducers/placesReducer";
+import { withStyles } from "@material-ui/styles";
+import Restaurant from "@material-ui/icons/Restaurant";
 
 const styles = {
   root: {
     flexGrow: 1,
-    maxWidth: 752,
-  },
+    maxWidth: 752
+  }
 };
 
 class myPlaces extends React.Component {
@@ -71,12 +70,12 @@ class myPlaces extends React.Component {
 
 const mapStateToProps = state => ({
   places: state.places.myPlaces,
-  loading: state.places.loading,
+  loading: state.places.loading
 });
 
-// const mapDispatchToProps = dispatch => ({
-//   getMyPlaces: id => dispatch(getUsersPlaces(id)),
-// });
+const mapDispatchToProps = dispatch => ({
+  getMyPlaces: id => dispatch(getUsersPlaces(id))
+});
 
 export default connect(
   mapStateToProps,

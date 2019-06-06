@@ -50,7 +50,6 @@ export default class Map extends React.Component {
   // }
 
   render() {
-    console.log(">>> ", this.state)
     return (
       <div>
       <div>
