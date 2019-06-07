@@ -1,30 +1,30 @@
-import React from "react";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
-import ListItemText from "@material-ui/core/ListItemText";
-import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import FolderIcon from "@material-ui/icons/Folder";
-import DeleteIcon from "@material-ui/icons/Delete";
-import { connect } from "react-redux";
-import { getUsersPlaces } from "../reducers/placesReducer";
-import { withStyles } from "@material-ui/styles";
-import Restaurant from "@material-ui/icons/Restaurant";
+import React from 'react';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import ListItemText from '@material-ui/core/ListItemText';
+import Avatar from '@material-ui/core/Avatar';
+import IconButton from '@material-ui/core/IconButton';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import FolderIcon from '@material-ui/icons/Folder';
+import DeleteIcon from '@material-ui/icons/Delete';
+import { connect } from 'react-redux';
+import { getUsersPlaces } from '../reducers/placesReducer';
+import { withStyles } from '@material-ui/styles';
+import Restaurant from '@material-ui/icons/Restaurant';
 
 const styles = {
   root: {
     flexGrow: 1,
-    maxWidth: 752
-  }
+    width: 250,
+  },
 };
 
-class myPlaces extends React.Component {
+class MyPlaces extends React.Component {
   async componentDidMount() {
-    await this.props.getMyPlaces(this.props.match.params.id);
+    await this.props.getMyPlaces(this.props.user.id);
   }
   render() {
     if (this.props.loading) {
@@ -32,7 +32,7 @@ class myPlaces extends React.Component {
     } else {
       const { classes } = this.props;
       return (
-        <div className={classes.root}>
+        <div className={classes.root} role="presentation">
           <Grid container spacing={2}>
             <Grid item xs={12} md={6}>
               <Typography variant="h6" className={classes.title}>
@@ -69,15 +69,16 @@ class myPlaces extends React.Component {
 }
 
 const mapStateToProps = state => ({
+  user: state.users.user,
   places: state.places.myPlaces,
-  loading: state.places.loading
+  loading: state.places.loading,
 });
 
 const mapDispatchToProps = dispatch => ({
-  getMyPlaces: id => dispatch(getUsersPlaces(id))
+  getMyPlaces: id => dispatch(getUsersPlaces(id)),
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withStyles(styles)(myPlaces));
+)(withStyles(styles)(MyPlaces));
