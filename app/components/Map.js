@@ -1,7 +1,7 @@
 import React from 'react';
-import ReactMapGL, { Marker } from 'react-map-gl'
-import './Map.css'
-import Root from './root'
+import ReactMapGL, { Marker } from 'react-map-gl';
+import './Map.css';
+import Root from './root';
 import axios from 'axios';
 
 export default class Map extends React.Component {
@@ -11,55 +11,35 @@ export default class Map extends React.Component {
       viewport: {
         width: 1500,
         height: 1300,
-        latitude: 40.7106639,
-        longitude: -74.0182495,
+        // latitude: 40.704540,
+        // longitude: -74.009468,
+        latitude: 40.7587265,
+        longitude: -73.9185131,
         zoom: 14
       },
-      favorites: {},
       userLocation: {
-        lat: 40.7106639,
-        long: -74.0182495
-      }
+        // lat: 40.704540,
+        // long: -74.009468,
+        lat: 40.7587265,
+        long: -73.9185131,
+      },
+      favorites: {},
     };
+    this.updateFavorites = this.updateFavorites.bind(this);
   }
 
-  async componentDidMount() {
-    await navigator.geolocation.getCurrentPosition(position=>{
-      this.setState({
-        viewport: {...this.state.viewport, latitude: position.coords.latitude, longitude: position.coords.longitude},
-        userLocation: {
-              lat: position.coords.latitude,
-              long: position.coords.longitude
-            }})
-          })
+  async updateFavorites() {
     try {
       const { data } = await axios.get(`https://api.foursquare.com/v2/venues/search?ll=${this.state.userLocation.lat},${this.state.userLocation.long}&radius=1000&intent=browse&categoryId=4bf58dd8d48988d14e941735&client_id=5IDUOTEW20UIMVSEBNT1UJCSCBXQQB4X55DLJDE0QCK23TKT&client_secret=QWUQ4HLZKU34TZNMSCHBMYP0NZ2TUFSQX0RPX4TOTWMZ0MPN&v=20190606`);
-      this.setState({favorites: data})
-      // navigator.geolocation.getCurrentPosition(position=>{
-      //   this.setState({
-      //     favorites: data,
-      //     viewport:{...this.state.viewport, latitude: position.coords.latitude, longitude: position.coords.longitude},
-      //     userLocation: {
-      //       lat: position.coords.latitude,
-      //       long: position.coords.longitude
-      //     }
-      //   })
-      // })
-   
+      this.setState({
+        favorites: data,
+      });
     } catch(error) {
       console.error(error);
     }
   }
 
-  // // add and bind onViewPortChange 
-  // onViewportChange(viewport) {
-  //   this.setState({
-  //     viewport,
-  //   })
-  // }
-
   render() {
-    console.log(this.state.favorites  )
     return (
       <div>
       <div>
@@ -70,14 +50,22 @@ export default class Map extends React.Component {
         <ReactMapGL
           mapboxApiAccessToken="pk.eyJ1IjoidGFsaWFjb2RlcyIsImEiOiJjandpZTBxbWgwNDFkNDNwNnA2YjlzdGVjIn0._xfI0OnuzfDCj7IY8FkQjw" mapStyle="mapbox://styles/taliacodes/cjwif4ee60z9r1clsi43mtvjy"
           {...this.state.viewport}
-          onViewportChange={viewport => this.setState({ viewport })}
+          onViewportChange={viewport => {
+            this.setState({ viewport });
+            navigator.geolocation.getCurrentPosition(position => {
+              this.setState({
+                userLocation: {
+                  lat: position.coords.latitude,
+                  long: position.coords.longitude,
+                }
+              });
+            });
+            this.updateFavorites();
+          }
+        }
         >
-          {/* <Marker latitude={40.705137} longitude={-74.01394} offsetLeft={-20} offsetTop={-10}> */}
-          {/* <Marker latitude={40.705137} longitude={-74.01394} >
-            <div className="initialMarker" />
-          </Marker> */}
           <Marker latitude={this.state.userLocation.lat} longitude={this.state.userLocation.long} >
-            <div className="marker" />
+            <div className="initialMarker" />
           </Marker>
           {this.state.favorites.response ? this.state.favorites.response.venues.map(curVenue => (<Marker key={curVenue.id} latitude={curVenue.location.lat} longitude={curVenue.location.lng} ><div className="marker" /></Marker>)) : null}
         </ReactMapGL>
