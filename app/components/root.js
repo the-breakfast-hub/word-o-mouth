@@ -16,7 +16,7 @@ const Root = () => {
           <h1>Word of Mouth</h1>
         </div>
         <div>
-          <Link to="/map" component={Map}>
+          <Link to="/map">
             <img id="search-icon" src="https://i.imgur.com/rPXnctN.png" />
           </Link>
         </div>
