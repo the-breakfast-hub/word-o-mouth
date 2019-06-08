@@ -79,7 +79,7 @@ export default class Map extends React.Component {
           </Marker>
           {this.state.favorites.response ? this.state.favorites.response.venues.map(curVenue => (<Marker key={curVenue.id} latitude={curVenue.location.lat} longitude={curVenue.location.lng} ><div className="marker" /></Marker>)) : null}
         </ReactMapGL>
-      </div>
+        </div>
       <div id="app-stuff">
         <div id="search-bar-map">
         <form className="form" onSubmit={this.handleSubmit}>
@@ -96,6 +96,57 @@ export default class Map extends React.Component {
         </form>
         </div>
         
+
+        <aside>
+          <div className="panel" id="options-panel">
+
+            <div>
+              <h2>Hotels</h2>
+              <select id="hotels-choices">
+                <option>An Hotel</option>
+              </select>
+              <button type="submit" id="hotels-add" className="options-btn">+</button>
+            </div>
+
+            <div>
+              <h2>Restaurants</h2>
+              <select id="restaurants-choices">
+                <option>A Restaurant</option>
+              </select>
+              <button type="submit" id="restaurants-add" className="options-btn">+</button>
+            </div>
+
+            <div>
+              <h2>Activities</h2>
+              <select id="activities-choices">
+                <option>An Activity</option>
+              </select>
+              <button type="submit" id="activities-add" className="options-btn">+</button>
+            </div>
+
+          </div>
+
+          <div className="panel" id="itinerary">
+
+            <div>
+              <h2>My Hotel</h2>
+              <ul className="list-group" id="hotels-list"/>
+            </div>
+
+            <div>
+              <h2>My Restaurants</h2>
+              <ul className="list-group" id="restaurants-list" />
+            </div>
+
+            <div>
+              <h2>My Activities</h2>
+              <ul className="list-group" id="activities-list" />
+            </div>
+
+          </div>
+
+        </aside>
+
       </div>
       </div>
     );
