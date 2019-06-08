@@ -29,12 +29,23 @@ export default class Map extends React.Component {
   }
 
   async updateFavorites() {
+
+    const endPoint = 'https://api.foursquare.com/v2/venues/search?'
+    const parameters = {
+      ll: `${this.state.userLocation.lat},${this.state.userLocation.long}`,
+      radius: 1000,
+      intent: 'browse',
+      categoryId: '4bf58dd8d48988d14e941735',
+      client_id: 'LBVIQAW2E0HWIUIFFCJBXSQKEUXNNELN2GZWURVCS5QJN0ZZ',
+      client_secret: 'AEU2DL0RTEDHRVT04B2XC0JADIYXZCRQZ0K1IMBQAP2RMEGH',
+      v: 20190606
+    }
     try {
-      const { data } = await axios.get(`https://api.foursquare.com/v2/venues/search?ll=${this.state.userLocation.lat},${this.state.userLocation.long}&radius=1000&intent=browse&categoryId=4bf58dd8d48988d14e941735&client_id=5IDUOTEW20UIMVSEBNT1UJCSCBXQQB4X55DLJDE0QCK23TKT&client_secret=QWUQ4HLZKU34TZNMSCHBMYP0NZ2TUFSQX0RPX4TOTWMZ0MPN&v=20190606`);
+      const { data } = await axios.get(endPoint + new URLSearchParams(parameters));
       this.setState({
         favorites: data,
       });
-    } catch(error) {
+    } catch (error) {
       console.error(error);
     }
   }

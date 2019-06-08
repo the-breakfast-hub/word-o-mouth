@@ -3,7 +3,11 @@
 }
 
 #search-box {
-  border-radius: 10px;
+  border-radius: 10px 0px 0px 10px;
   padding: 5px;
   width: 300px;
+}
+
+i {
+  font-size: 24px;
 }

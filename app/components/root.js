@@ -1,9 +1,8 @@
 import React from 'react';
 import './root.css';
-import SearchBar from './SearchBar';
-import SearchList from './SearchList';
 import Map from './Map';
 import { Link } from 'react-router-dom';
+import Venues from './Venues'
 
 const Root = () => {
   return (
@@ -22,9 +21,7 @@ const Root = () => {
         </div>
       </div>
       <main>
-        <SearchBar />
-        <p>Your Recent Places</p>
-        <SearchList />
+        <Venues />
         <div id="places" />
       </main>
     </div>
