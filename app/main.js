@@ -1,26 +1,28 @@
-import 'babel-polyfill';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import store from './store';
-import '../public/style.css';
-import { Provider } from 'react-redux';
+import "babel-polyfill";
+import React from "react";
+import ReactDOM from "react-dom";
+import store from "./store";
+import "../public/style.css";
+import { Provider } from "react-redux";
 import {
   HashRouter as Router,
   Route,
   Switch,
-  withRouter,
-} from 'react-router-dom';
-import { getMe } from './reducers/usersReducer';
-import Home from './components/Home';
-import Login from './components/Login';
-import NewUser from './components/NewUser';
-import Map from './components/Map';
-import myPlaces from './components/myPlaces';
+  withRouter
+} from "react-router-dom";
+import { getMe } from "./reducers/usersReducer";
+import Home from "./components/Home";
+import Login from "./components/Login";
+import NewUser from "./components/NewUser";
+import Map from "./components/Map";
+import myPlaces from "./components/myPlaces";
+import UserProfile from "./components/UserProfile";
+import { strict } from "assert";
 const Main = withRouter(
   class extends React.Component {
     async componentDidMount() {
       await store.dispatch(getMe());
-      this.props.history.push('/');
+      this.props.history.push("/");
     }
     render() {
       return (
@@ -30,6 +32,7 @@ const Main = withRouter(
           <Route path="/newUser" component={NewUser} />
           <Route path="/map" component={Map} />
           <Route path="/places/:id" component={myPlaces} />
+          <Route exact path="/me" component={UserProfile} />
         </Switch>
       );
     }
@@ -41,5 +44,5 @@ ReactDOM.render(
       <Main />
     </Router>
   </Provider>,
-  document.getElementById('main')
+  document.getElementById("main")
 );
