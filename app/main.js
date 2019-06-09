@@ -16,8 +16,9 @@ import Login from "./components/Login";
 import NewUser from "./components/NewUser";
 import Map from "./components/Map";
 import myPlaces from "./components/myPlaces";
+import Venues from "./components/Venues";
 import UserProfile from "./components/UserProfile";
-import { strict } from "assert";
+
 const Main = withRouter(
   class extends React.Component {
     async componentDidMount() {
@@ -32,7 +33,8 @@ const Main = withRouter(
           <Route path="/newUser" component={NewUser} />
           <Route path="/map" component={Map} />
           <Route path="/places/:id" component={myPlaces} />
-          <Route exact path="/me" component={UserProfile} />
+          <Route path="/search" component={Venues} />
+          <Route path="/me" component={UserProfile} />
         </Switch>
       );
     }

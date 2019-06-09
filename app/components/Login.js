@@ -62,6 +62,7 @@ const Login = props => {
             id="email"
             label="Email Address"
             name="email"
+            value="margaret.atwood@gmail.com"
           />
           <TextField
             variant="outlined"
@@ -72,6 +73,7 @@ const Login = props => {
             label="Password"
             type="password"
             id="password"
+            value="alejfija"
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
