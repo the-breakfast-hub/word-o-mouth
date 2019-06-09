@@ -31,7 +31,6 @@ const useStyles = makeStyles(theme => ({
 
 const UserProile = props => {
   const classes = useStyles();
-  const { id, firstName, lastName, email } = props.users.user;
   return (
     <div className={classes.root}>
       <Root />
@@ -47,20 +46,13 @@ const UserProile = props => {
         <Grid item xs={3}>
           <Paper className={classes.paper}>
             <div className={classes.img} />
-            <h1>{`${firstName} ${lastName}`}</h1>
+            <h1>Restaurant name here</h1>
           </Paper>
         </Grid>
         <Grid item xs={7}>
           <Paper className={classes.paper}>
             <div className={classes.favoriteList}>
-              <h3>My favorites</h3>
-              <ul>
-                <li>Thing 1</li>
-                <li>Thing 2</li>
-                <li>Thing 3</li>
-                <li>Thing 4</li>
-                <li>Thing 5</li>
-              </ul>
+              <h3>Info here</h3>
             </div>
           </Paper>
         </Grid>
