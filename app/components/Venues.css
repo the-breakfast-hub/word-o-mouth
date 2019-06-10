@@ -1,13 +1,33 @@
 #search-bar {
-  margin: 10px;
+  padding: 20px;
 }
 
-#search-box {
-  border-radius: 10px 0px 0px 10px;
-  padding: 5px;
-  width: 300px;
+
+.form {
+  display: flex;
 }
 
-i {
-  font-size: 24px;
+input {
+  width: 400px;
+  height: 50px;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.form__submit {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  /* border: none; */
+  outline: none;
+  background: orange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+::placeholder {
+  font-family: 'Dosis';
+  color: #696969;
+  font-size: 1.5em;
 }

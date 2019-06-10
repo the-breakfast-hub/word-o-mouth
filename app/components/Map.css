@@ -34,12 +34,15 @@ h2 {
 aside {
   flex: 1;
   display: flex;
-  flex-direction: column;
   font-family: 'Dosis';
+  z-index: 2;
 }
 
-#app {
+#app-stuff {
   display: flex;
+  background: black;
+  z-index: 2;
+  justify-content: center;
 }
 
 .panel {
@@ -49,26 +52,19 @@ aside {
   background-color: rgb(194, 225, 255);
   color: rgb(94, 93, 97);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  border: 1px solid black;
 }
-
+/* 
 .panel > div {
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
-}
+} */
 
-.panel > div:first-child {
+/* .panel > div:first-child {
   margin-top: 0;
-}
+} */
 
-@media screen and (max-width: 600px) {
-  #app {
-    flex-direction: column;
-  }
-  #map {
-    margin: 0 1rem;
-    height: 75vh;
-  }
-}
+
 
 select {
   width: calc(100% - 25px);
@@ -93,3 +89,19 @@ select {
 .options-btn:active {
   background: #286090;
 }
+
+#search-bar-map {
+  padding: 10px;
+  z-index: 2;
+}
+
+
+/* @media screen and (max-width: 600px) {
+  #app {
+    flex-direction: column;
+  }
+  #map {
+    margin: 0 1rem;
+    height: 75vh;
+  }
+} */

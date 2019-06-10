@@ -22,10 +22,6 @@ const Root = () => {
           </Link>
         </div>
       </div>
-      <main>
-        <Venues />
-        <div id="places" />
-      </main>
     </div>
   );
 };

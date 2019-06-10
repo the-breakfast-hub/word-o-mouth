@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import './Venues.css';
+import AllVenues from './AllVenues';
 
 class Venues extends React.Component {
   constructor() {
@@ -22,7 +23,6 @@ class Venues extends React.Component {
     this.setState({
       [event.target.name]: event.target.value
     });
-    console.log('this is the query state', this.state.query);
   }
 
   async handleSubmit(event) {
@@ -50,28 +50,20 @@ class Venues extends React.Component {
 
   render() {
     return (
-      <div id="search-bar">
-        <form onSubmit={this.handleSubmit}>
+      <div id="search-bar-map">
+        <form className="form" onSubmit={this.handleSubmit}>
           <input
-            id="search-box"
+            className="form_input"
             onChange={this.handleChange}
             name="query"
             type="text"
             placeholder="Search"
           />
-          <button type="submit">
+          <button className="form__submit" type="submit">
             <i className="fa fa-search" />
           </button>
         </form>
-        <div>
-          <ul>
-            {this.state.venues.length
-              ? this.state.venues.map(venue => (
-                  <li key={venue.id}>{venue.name}</li>
-                ))
-              : false}
-          </ul>
-        </div>
+        <AllVenues venues={this.state.venues} />
       </div>
     );
   }

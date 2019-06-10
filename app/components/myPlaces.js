@@ -18,6 +18,8 @@ const styles = {
   root: {
     flexGrow: 1,
     width: 400,
+    background: 'rgb(184, 204, 255)',
+    fontFamily: 'Dosis',
   },
 };
 
