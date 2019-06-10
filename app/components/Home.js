@@ -1,27 +1,27 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
-import { logout } from '../reducers/usersReducer';
-import Root from './root';
-import './Home.css';
-import MyPlaces from '../components/myPlaces';
-import IconButton from '@material-ui/core/IconButton';
-import Favorite from '@material-ui/icons/Favorite';
-import Drawer from '@material-ui/core/Drawer';
+import React from "react";
+import { connect } from "react-redux";
+import { Redirect, Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import { logout } from "../reducers/usersReducer";
+import Root from "./root";
+import "./Home.css";
+import MyPlaces from "../components/myPlaces";
+import IconButton from "@material-ui/core/IconButton";
+import Favorite from "@material-ui/icons/Favorite";
+import Drawer from "@material-ui/core/Drawer";
 
 class Home extends React.Component {
   constructor() {
     super();
     this.state = {
-      left: false,
+      left: false
     };
     this.toggleDrawer = this.toggleDrawer.bind(this);
   }
   toggleDrawer(open) {
     let curr = this.state.left;
     this.setState({
-      left: open,
+      left: open
     });
   }
   render() {
@@ -30,8 +30,11 @@ class Home extends React.Component {
       return <Redirect to="/login" />;
     }
     return (
-      <div className="logout">
-        <h1>Welcome Back {user.lastName}!</h1> <Root />
+      <div>
+        <h1>
+          Welcome Back <Link to={`/me`}>{user.firstName}</Link>!
+        </h1>
+        <Root />
         <Button
           className="logout_button"
           onClick={handleClick}
@@ -56,12 +59,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     async handleClick() {
       await dispatch(logout());
-      ownProps.history.push('/');
-    },
+      ownProps.history.push("/");
+    }
   };
 };
 const mapStateToProps = state => ({
-  user: state.users.user,
+  user: state.users.user
 });
 
 export default connect(
