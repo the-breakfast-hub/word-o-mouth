@@ -1,4 +1,8 @@
+.list_items {
+  list-style-type: none;
+  
+}
+
 .list_item {
-  text-decoration: none;
-  font-family: 'Dosis'
+  font-family: 'Dosis';
 }

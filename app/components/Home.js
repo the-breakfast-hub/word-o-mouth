@@ -30,8 +30,8 @@ class Home extends React.Component {
       return <Redirect to="/login" />;
     }
     return (
-      <div>
-        <h1>Welcome Back {user.firstName}!</h1> <Root />
+      <div className="logout">
+        <h1>Welcome Back {user.lastName}!</h1> <Root />
         <Button
           className="logout_button"
           onClick={handleClick}

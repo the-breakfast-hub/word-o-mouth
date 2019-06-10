@@ -3,6 +3,7 @@ import ReactMapGL, { Marker } from 'react-map-gl';
 import './Map.css';
 import Root from './root';
 import axios from 'axios';
+import Venues from './Venues'
 
 export default class Map extends React.Component {
   constructor(props) {
@@ -56,6 +57,10 @@ export default class Map extends React.Component {
       <div>
       <Root />
       </div>
+      <main>
+        <Venues />
+        <div id="places" />
+      </main>
       <div id="map">
         <ReactMapGL
           mapboxApiAccessToken="pk.eyJ1IjoidGFsaWFjb2RlcyIsImEiOiJjandpZTBxbWgwNDFkNDNwNnA2YjlzdGVjIn0._xfI0OnuzfDCj7IY8FkQjw" mapStyle="mapbox://styles/taliacodes/cjwif4ee60z9r1clsi43mtvjy"
@@ -80,24 +85,26 @@ export default class Map extends React.Component {
           {this.state.favorites.response ? this.state.favorites.response.venues.map(curVenue => (<Marker key={curVenue.id} latitude={curVenue.location.lat} longitude={curVenue.location.lng} ><div className="marker" /></Marker>)) : null}
         </ReactMapGL>
       </div>
-      <div id="app-stuff">
-        <div id="search-bar-map">
-        <form className="form" onSubmit={this.handleSubmit}>
-          <input
-            className="form_input"
-            onChange={this.handleChange}
-            name="query"
-            type="text"
-            placeholder="Search"
-          />
-          <button className="form__submit" type="submit">
-            <i className="fa fa-search" />
-          </button>
-        </form>
-        </div>
-        
-      </div>
       </div>
     );
   }
 }
+
+
+// <div id="app-stuff">
+//         <div id="search-bar-map">
+//         <form className="form" onSubmit={this.handleSubmit}>
+//           <input
+//             className="form_input"
+//             onChange={this.handleChange}
+//             name="query"
+//             type="text"
+//             placeholder="Search"
+//           />
+//           <button className="form__submit" type="submit">
+//             <i className="fa fa-search" />
+//           </button>
+//         </form>
+//         </div>
+        
+//       </div>

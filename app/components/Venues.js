@@ -23,7 +23,6 @@ class Venues extends React.Component {
     this.setState({
       [event.target.name]: event.target.value
     });
-    console.log('this is the query state', this.state.query);
   }
 
   async handleSubmit(event) {
@@ -51,7 +50,7 @@ class Venues extends React.Component {
 
   render() {
     return (
-      <div id="search-bar">
+      <div id="search-bar-map">
         <form className="form" onSubmit={this.handleSubmit}>
           <input
             className="form_input"

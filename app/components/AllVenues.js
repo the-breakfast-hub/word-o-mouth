@@ -1,5 +1,5 @@
 import React from 'react';
-import './AllVenues'
+import './AllVenues.css'
 
 const AllVenues = props => {
   const venues = props.venues
